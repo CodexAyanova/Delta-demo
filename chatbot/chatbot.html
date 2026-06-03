@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Airbnb AI Chatbot</title>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="chat-container">
+
+    <!-- Header -->
+    <div class="chat-header">
+      <div>
+        <h2>Airbnb AI Assistant</h2>
+        <p>Ask about rooms, pricing & bookings</p>
+      </div>
+
+      <div class="online-dot"></div>
+    </div>
+
+    <!-- Chat Messages -->
+    <div class="chat-box" id="chatBox">
+
+      <div class="message bot-message">
+        Hi 👋 Welcome to our Airbnb property. How can I help you today?
+      </div>
+
+    </div>
+
+    <!-- Input Area -->
+    <div class="input-area">
+      <input
+        type="text"
+        id="userInput"
+        placeholder="Ask about rooms, pricing, amenities..."
+      />
+
+      <button id="sendBtn">Send</button>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

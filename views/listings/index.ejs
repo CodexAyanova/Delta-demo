@@ -1,0 +1,157 @@
+<% layout("/layouts/boilerplate") %>
+
+<style>
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .filter {
+    text-align: center;
+    margin-right: 1rem;
+    margin-left: 1rem;
+    margin-top: 2rem;
+    opacity: 0.7;
+    padding: 1rem;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .filter:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+
+  .filter p {
+    font-size: 0.8rem;
+  }
+
+  .tax-info{
+    display: none;
+  }
+
+  .listings-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+  .tax-toggle {
+    border: 1px solid black;
+    border-radius: 2rem;
+    height: 3.5rem;
+    padding: 1rem;
+    margin-left: 5rem;
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+  }
+
+</style>
+
+<div class="filters navbar-collapse">
+  <a href="/listings/filter/Trending" class="filter">
+    <div><i class="fa-solid fa-fire fa-2x"></i></div>
+    <p>Trending</p>
+  </a>
+  <a href="/listings/filter/Rooms" class="filter">
+    <div><i class="fa-solid fa-bed fa-2x"></i></div>
+    <p>Rooms</p>
+  </a>
+  <a href="/listings/filter/Iconic Cities" class="filter">
+    <div><i class="fa-solid fa-mountain-city fa-2x"></i></div>
+    <p>Iconic Cities</p>
+  </a>
+  <a href="/listings/filter/Mountains" class="filter">
+    <div><i class="fa-solid fa-mountain fa-2x"></i></div>
+    <p>Mountains</p>
+  </a>
+  <a href="/listings/filter/Castles" class="filter">
+    <div><i class="fa-brands fa-fort-awesome fa-2x"></i></div>
+    <p>Castles</p>
+  </a>
+  <a href="/listings/filter/Amazing Pools" class="filter">
+    <div><i class="fa-solid fa-person-swimming fa-2x"></i></div>
+    <p>Amazing Pools</p>
+  </a>
+  <a href="/listings/filter/Camping" class="filter">
+    <div><i class="fa-solid fa-campground fa-2x"></i></div>
+    <p>Camping</p>
+  </a>
+  <a href="/listings/filter/Farms" class="filter">
+    <div><i class="fa-solid fa-cow fa-2x"></i></div>
+    <p>Farms</p>
+  </a>
+  <a href="/listings/filter/Arctic" class="filter">
+    <div><i class="fa-solid fa-snowflake fa-2x"></i></div>
+    <p>Arctic</p>
+  </a>
+  <a href="/listings/filter/Dome" class="filter">
+    <div><i class="fa-solid fa-landmark-dome fa-2x"></i></div>
+    <p>Dome</p>
+  </a>
+  <a href="/listings/filter/Cruise" class="filter">
+    <div><i class="fa-solid fa-ship fa-2x"></i></div>
+    <p>Cruise</p>
+  </a>
+
+  <div class="tax-toggle">
+    <div class="form-check-reverse form-switch">
+      <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
+      <label class="form-check-label" for="switchCheckDefault">Display Taxes</label>
+    </div>
+  </div>
+</div>
+
+
+<div class="listings-container">
+    <% for(let listing of allListings) { %>
+      <a href="/listings/<%= listing._id %>" class="listing-link">
+        <div class="card listing-card">
+  <img src="<%= listing.image.url %>" class="card-img-top" alt="listing_image" style="height: 20rem;">
+  <div class="card-img-overlay"></div>
+  <div class="card-body">
+    <p class="card-text">
+        <b><%= listing.title %></b><br>
+        <span class="listing-price" data-price="<%= listing.price %>">
+            &#8377 <%= listing.price %>
+        </span>/night
+        <i class="tax-info">&nbsp; &nbsp; (incl. GST)</i>
+    </p>
+  </div>
+</div>
+      </a>
+
+<% } %>
+</div>
+
+  <script>
+  let taxSwitch = document.getElementById("switchCheckDefault");
+
+  taxSwitch.addEventListener("click", () => {
+
+    let taxInfo = document.getElementsByClassName("tax-info");
+    let prices = document.getElementsByClassName("listing-price");
+
+    for(let info of taxInfo){
+      info.style.display =
+        info.style.display === "inline" ? "none" : "inline";
+    }
+
+    for(let price of prices){
+      let originalPrice = Number(price.dataset.price);
+
+      if(taxSwitch.checked){
+        let taxedPrice = Math.round(originalPrice * 1.18);
+        price.innerHTML = `&#8377 ${taxedPrice}`;
+      } else {
+        price.innerHTML = `&#8377 ${originalPrice}`;
+      }
+    }
+  });
+</script>
+
+
+
