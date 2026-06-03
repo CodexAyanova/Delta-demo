@@ -31,12 +31,7 @@
     display: none;
   }
 
-  .listings-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.5rem;
-    margin-top: 1rem;
-}
+ 
 
   .tax-toggle {
     border: 1px solid black;
@@ -53,47 +48,47 @@
 
 <div class="filters navbar-collapse">
   <a href="/listings/filter/Trending" class="filter">
-    <div><i class="fa-solid fa-fire fa-2x"></i></div>
+    <div><i class="fa-solid fa-fire "></i></div>
     <p>Trending</p>
   </a>
   <a href="/listings/filter/Rooms" class="filter">
-    <div><i class="fa-solid fa-bed fa-2x"></i></div>
+    <div><i class="fa-solid fa-bed "></i></div>
     <p>Rooms</p>
   </a>
   <a href="/listings/filter/Iconic Cities" class="filter">
-    <div><i class="fa-solid fa-mountain-city fa-2x"></i></div>
+    <div><i class="fa-solid fa-mountain-city"></i></div>
     <p>Iconic Cities</p>
   </a>
   <a href="/listings/filter/Mountains" class="filter">
-    <div><i class="fa-solid fa-mountain fa-2x"></i></div>
+    <div><i class="fa-solid fa-mountain"></i></div>
     <p>Mountains</p>
   </a>
   <a href="/listings/filter/Castles" class="filter">
-    <div><i class="fa-brands fa-fort-awesome fa-2x"></i></div>
+    <div><i class="fa-brands fa-fort-awesome"></i></div>
     <p>Castles</p>
   </a>
   <a href="/listings/filter/Amazing Pools" class="filter">
-    <div><i class="fa-solid fa-person-swimming fa-2x"></i></div>
+    <div><i class="fa-solid fa-person-swimming"></i></div>
     <p>Amazing Pools</p>
   </a>
   <a href="/listings/filter/Camping" class="filter">
-    <div><i class="fa-solid fa-campground fa-2x"></i></div>
+    <div><i class="fa-solid fa-campground"></i></div>
     <p>Camping</p>
   </a>
   <a href="/listings/filter/Farms" class="filter">
-    <div><i class="fa-solid fa-cow fa-2x"></i></div>
+    <div><i class="fa-solid fa-cow"></i></div>
     <p>Farms</p>
   </a>
   <a href="/listings/filter/Arctic" class="filter">
-    <div><i class="fa-solid fa-snowflake fa-2x"></i></div>
+    <div><i class="fa-solid fa-snowflake"></i></div>
     <p>Arctic</p>
   </a>
   <a href="/listings/filter/Dome" class="filter">
-    <div><i class="fa-solid fa-landmark-dome fa-2x"></i></div>
+    <div><i class="fa-solid fa-landmark-dome"></i></div>
     <p>Dome</p>
   </a>
   <a href="/listings/filter/Cruise" class="filter">
-    <div><i class="fa-solid fa-ship fa-2x"></i></div>
+    <div><i class="fa-solid fa-ship"></i></div>
     <p>Cruise</p>
   </a>
 
@@ -106,7 +101,7 @@
 </div>
 
 
-<div class="listings-container">
+<div class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-3 mt-3">
     <% for(let listing of allListings) { %>
       <a href="/listings/<%= listing._id %>" class="listing-link">
         <div class="card listing-card">
